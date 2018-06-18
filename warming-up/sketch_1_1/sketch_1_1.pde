@@ -14,12 +14,14 @@
 char[] text;
 int index;
 
+// Initializations
 void setup() {
 	size(500, 300);
 	text = "Sample string".toCharArray();
 	index = 0;
 }
 
+// Main drawing function
 void draw() {
 	background(255, 255, 244);
 	fill(0, 0, 0);
@@ -63,8 +65,9 @@ void letterByLetterBackwards(char[] text, int index) {
 
 /*
  * Counts the number of occurrences of a character
- * @param text - Array of characters with text
- * @param letter - Character to count occurrences of
+ * @param {char[]} text - Array of characters with text
+ * @param {char} letter - Character to count occurrences of
+ * @returns {int} Number of occurrences
  */
 int countOccurrences(char[] text, char letter) {
 	int count = 0;
@@ -76,8 +79,8 @@ int countOccurrences(char[] text, char letter) {
 
 /*
  * Returns whether or not a word is a palindrome
- * @param text - Array of characters with text
- * @param letter - Character to count occurrences of
+ * @param {char[]} text - Array of characters with text
+ * @returns {boolean} Whether or not a word is a palindrome
  */
 boolean isPalindrome(char[] text) {
 	for (int i = 0; i < text.length; i++)
