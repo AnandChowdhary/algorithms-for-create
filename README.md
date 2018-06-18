@@ -4,4 +4,4 @@ Assignments for Algorithms for CreaTe, module Art, Impact and Technology, Creati
 
 ## Plagiarism
 
-If you're a CreaTe student, it's best if you do these assignments yourself, because it's important to understand the underlying concepts.
+If you're a CreaTe student, it's best if you do these assignments yourself, because it's important to understand the underlying concepts. I'm releasing this code under CC-BY, which means you're free to use, modify, and share this code with attribution.
