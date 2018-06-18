@@ -64,10 +64,9 @@ void letterByLetterBackwards(char[] text, int index) {
 }
 
 /*
- * Counts the number of occurrences of a character
- * @param {char[]} text - Array of characters with text
- * @param {char} letter - Character to count occurrences of
- * @returns {int} Number of occurrences
+ * @param text - Array of characters with text
+ * @param letter - Character to count occurrences of
+ * @returns Number of occurrences
  */
 int countOccurrences(char[] text, char letter) {
 	int count = 0;
@@ -79,8 +78,7 @@ int countOccurrences(char[] text, char letter) {
 
 /*
  * Returns whether or not a word is a palindrome
- * @param {char[]} text - Array of characters with text
- * @returns {boolean} Whether or not a word is a palindrome
+ * @param text - Array of characters with text
  */
 boolean isPalindrome(char[] text) {
 	for (int i = 0; i < text.length; i++)
