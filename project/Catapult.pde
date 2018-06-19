@@ -15,12 +15,10 @@ class Catapult
 
   void display()
   {
+    image(cat,location.x,height-height/4,width/16,height/2);
     ellipse(location.x, location.y, radius, radius);
     if (!active)
-    {
-      image(cat,location.x,height-height/4,width/16,height/2);
       line(mouseX, mouseY, location.x, location.y);
-    }
   }
 
   void move()
