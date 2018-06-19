@@ -8,8 +8,6 @@ int radius;
 PVector gravity;
 float airResistance;
 float bounceResistance;
-boolean active = false;
-boolean done = false;
 int endMillis = 0;
 int fps = 60;
 float frameTime;
@@ -21,17 +19,10 @@ ArrayList<Projectile> proj = new ArrayList<Projectile>();
 
 void setup() 
 {
-  startLocation = new PVector(width/4, 3*height/5);
   size(2000, 1000);
   frameRate(fps);
-  radius = 10;
-  gravity = new PVector(0, 9.81);
-  airResistance = 0.99;
-  bounceResistance = 0.75;
-  frameTime = 1000/fps;
-  c = new Catapult();
-  cat = loadImage("catapult.png");
   imageMode(CENTER);
+  setStuff();
 }
 
 void draw() 
@@ -39,49 +30,50 @@ void draw()
   int frameStart = millis();
   frameTime = 1000/fps;
   background(255);
-  if (active)
+  frameTime = frameTime + (frameStart - endMillis - frameTime);
+  update();
+  display();
+  endMillis = millis();
+}
+
+void setStuff()
+{
+  startLocation = new PVector(width/4, 3*height/5);
+  radius = 10;
+  gravity = new PVector(0, 9.81);
+  airResistance = 0.99;
+  bounceResistance = 0.75;
+  frameTime = 1000/fps;
+  c = new Catapult();
+  cat = loadImage("catapult.png");
+  proj.add(new Projectile());
+}
+
+void update()
+{
+  for (int i = 0; i < proj.size(); ++i) 
   {
-      frameTime = frameTime + (frameStart - endMillis - frameTime);
-      for (int i = 0; i < proj.size(); ++i) 
-      {
-        proj.get(i).move();
-      }
-      //c.move();
+    proj.get(i).move();
+    if (proj.get(i).done)
+    {
+      proj.remove(i);
+    }
   }
+}
+
+void display()
+{
   c.display();
   for (int i = 0; i < proj.size(); ++i) 
   {
     proj.get(i).display();
   }
-  endMillis = millis();
 }
 
 
 void mouseClicked()
 {
-  if (!active)
-  {
-    active = true;
-    done = false;
-    proj.add(new Projectile(PVector.sub(c.location, new PVector(mouseX, mouseY))));
-    endMillis = millis();
-  }
-  else
-  {
-    proj.add(new Projectile(PVector.sub(c.location, new PVector(mouseX, mouseY))));
-  }
+    proj.get(proj.size() - 1).acceleration = PVector.sub(startLocation, new PVector(mouseX, mouseY));
+    proj.get(proj.size() - 1).active = true;
+    proj.add(new Projectile());
 }
-
-/*
-void keyPressed()
-{
-  if (key == 'r' || key == 'R')
-  {
-    if (done)
-    {
-      active = false;
-      c.location = new PVector(width/4, 3*height/5);
-    }
-  }
-}
-*/
