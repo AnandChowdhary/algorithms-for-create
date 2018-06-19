@@ -41,23 +41,12 @@ void draw()
   background(255);
   if (active)
   {
-    if (frameStart > endMillis + frameTime && frameStart < (endMillis + frameTime + 2))
-    {
-      for (int i = 0; i < proj.size(); ++i) 
-      {
-        proj.get(i).move();
-      }
-      //c.move();
-    } 
-    else
-    {
       frameTime = frameTime + (frameStart - endMillis - frameTime);
       for (int i = 0; i < proj.size(); ++i) 
       {
         proj.get(i).move();
       }
       //c.move();
-    }
   }
   c.display();
   for (int i = 0; i < proj.size(); ++i) 
@@ -77,8 +66,13 @@ void mouseClicked()
     proj.add(new Projectile(PVector.sub(c.location, new PVector(mouseX, mouseY))));
     endMillis = millis();
   }
+  else
+  {
+    proj.add(new Projectile(PVector.sub(c.location, new PVector(mouseX, mouseY))));
+  }
 }
 
+/*
 void keyPressed()
 {
   if (key == 'r' || key == 'R')
@@ -90,3 +84,4 @@ void keyPressed()
     }
   }
 }
+*/
