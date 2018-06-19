@@ -32,7 +32,6 @@ public class Projectile
     {
         if (active)
         {
-            frameTime = frameTime/100;
             if (location.x >= width - radius/2)
             {
                 velocity.x = -bounceResistance * velocity.x;
@@ -59,7 +58,7 @@ public class Projectile
                 acceleration.mult(deceleration);
             }
             location.add(PVector.mult(velocity, frameTime));
-            velocity.add(PVector.mult(gravity, frameTime));
+            acceleration.add(PVector.mult(gravity, frameTime));
             velocity.mult(airResistance);
 
             if (velocity.y < 0.2 && location.y > (height - radius))

@@ -19,7 +19,7 @@ ArrayList<Projectile> proj = new ArrayList<Projectile>();
 
 void setup() 
 {
-  size(2000, 1000);
+  size(2000, 1000,P2D);
   frameRate(fps);
   imageMode(CENTER);
   setStuff();
@@ -30,7 +30,10 @@ void draw()
   int frameStart = millis();
   frameTime = 1000/fps;
   background(255);
-  frameTime = frameTime + (frameStart - endMillis - frameTime);
+  if (!(frameStart > endMillis + frameTime && frameStart < (endMillis + frameTime + 2)))
+  {
+      frameTime = frameTime + (frameStart - endMillis - frameTime);
+  }
   update();
   display();
   endMillis = millis();
@@ -51,6 +54,7 @@ void setStuff()
 
 void update()
 {
+  frameTime = frameTime/100;
   for (int i = 0; i < proj.size(); ++i) 
   {
     proj.get(i).move();
@@ -63,13 +67,12 @@ void update()
 
 void display()
 {
-  c.display();
   for (int i = 0; i < proj.size(); ++i) 
   {
     proj.get(i).display();
   }
+  c.display();
 }
-
 
 void mouseClicked()
 {
