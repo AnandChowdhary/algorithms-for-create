@@ -32,13 +32,13 @@ void draw()
     stroke(255,0,0);
     if (active)
     {
-        if (millis() > endMillis + frameTime && millis() < (endMillis + frameTime + 2))
+        if (frameStart > endMillis + frameTime && frameStart < (endMillis + frameTime + 2))
         {
             c.move();
         }
         else
         {
-            frameTime = frameTime + (millis() - endMillis - frameTime);
+            frameTime = frameTime + (frameStart - endMillis - frameTime);
             c.move();
         }
     }
