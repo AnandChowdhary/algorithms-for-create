@@ -15,14 +15,19 @@ class Catapult
 
   void display()
   {
+    fill(255, 0, 0);
     if (!active)
     {
+      noStroke();
+      ellipse(mouseX,mouseY, radius, radius);
+      stroke(0);
+      strokeWeight(10);
       line(mouseX, mouseY, location.x+width/34, location.y);
       line(mouseX, mouseY, location.x-width/34, location.y);
-      ellipse(mouseX,mouseY, radius, radius);
     }
     else
     {
+      noStroke();
       ellipse(location.x, location.y, radius, radius);
     }
     image(cat,width/4,height-height/4,width/16,height/2);      

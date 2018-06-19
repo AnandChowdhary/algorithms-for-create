@@ -36,8 +36,6 @@ void draw()
   int frameStart = millis();
   frameTime = 1000/fps;
   background(255);
-  fill(255, 0, 0);
-  stroke(255, 0, 0);
   if (active)
   {
     if (frameStart > endMillis + frameTime && frameStart < (endMillis + frameTime + 2))
