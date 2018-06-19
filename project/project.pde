@@ -1,6 +1,5 @@
 /*
 Program by Wouter Couwenbergh & Anand Chowdhary
-
 */
 
 PImage cat;
