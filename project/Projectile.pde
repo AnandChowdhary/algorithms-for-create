@@ -55,11 +55,11 @@ public class Projectile
             if (acceleration.mag() > 1)
             {
                 velocity.add(PVector.mult(acceleration, frameTime));
-                acceleration.mult(deceleration);
+                acceleration.mult(pow(deceleration,frameTime/0.16));
             }
             location.add(PVector.mult(velocity, frameTime));
-            acceleration.add(PVector.mult(gravity, frameTime));
-            velocity.mult(airResistance);
+            velocity.add(PVector.mult(gravity, frameTime));
+            velocity.mult(pow(airResistance,frameTime/0.16));
 
             if (velocity.y < 0.2 && location.y > (height - radius))
             {

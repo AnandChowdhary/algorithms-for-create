@@ -19,7 +19,7 @@ ArrayList<Projectile> proj = new ArrayList<Projectile>();
 
 void setup() 
 {
-  size(2000, 1000,P2D);
+  size(2000, 1000);
   frameRate(fps);
   imageMode(CENTER);
   setStuff();
