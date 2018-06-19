@@ -1,3 +1,8 @@
+/*
+Program by Wouter Couwenbergh & Anand Chowdhary
+
+*/
+
 PImage cat;
 
 int radius;
@@ -39,7 +44,8 @@ void draw()
     if (frameStart > endMillis + frameTime && frameStart < (endMillis + frameTime + 2))
     {
       c.move();
-    } else
+    } 
+    else
     {
       frameTime = frameTime + (frameStart - endMillis - frameTime);
       c.move();
@@ -48,6 +54,7 @@ void draw()
   c.display();
   endMillis = millis();
 }
+
 
 void mouseClicked()
 {
