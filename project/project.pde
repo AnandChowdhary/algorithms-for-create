@@ -1,3 +1,5 @@
+PImage cat;
+
 int radius;
 PVector gravity;
 float airResistance;
@@ -21,6 +23,8 @@ void setup()
   bounceResistance = 0.75;
   frameTime = 1000/fps;
   c = new Catapult();
+  cat = loadImage("catapult.png");
+  imageMode(CENTER);
 }
 
 void draw() 
