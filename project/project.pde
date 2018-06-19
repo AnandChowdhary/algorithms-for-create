@@ -13,12 +13,15 @@ boolean done = false;
 int endMillis = 0;
 int fps = 60;
 float frameTime;
+PVector startLocation;
 
 Catapult c;
+ArrayList<Projectile> proj = new ArrayList<Projectile>();
 
 
 void setup() 
 {
+  startLocation = new PVector(width/4, 3*height/5);
   size(2000, 1000);
   frameRate(fps);
   radius = 10;
@@ -40,15 +43,27 @@ void draw()
   {
     if (frameStart > endMillis + frameTime && frameStart < (endMillis + frameTime + 2))
     {
-      c.move();
+      for (int i = 0; i < proj.size(); ++i) 
+      {
+        proj.get(i).move();
+      }
+      //c.move();
     } 
     else
     {
       frameTime = frameTime + (frameStart - endMillis - frameTime);
-      c.move();
+      for (int i = 0; i < proj.size(); ++i) 
+      {
+        proj.get(i).move();
+      }
+      //c.move();
     }
   }
   c.display();
+  for (int i = 0; i < proj.size(); ++i) 
+  {
+    proj.get(i).display();
+  }
   endMillis = millis();
 }
 
@@ -59,7 +74,7 @@ void mouseClicked()
   {
     active = true;
     done = false;
-    c.acceleration = PVector.sub(c.location, new PVector(mouseX, mouseY));
+    proj.add(new Projectile(PVector.sub(c.location, new PVector(mouseX, mouseY))));
     endMillis = millis();
   }
 }
