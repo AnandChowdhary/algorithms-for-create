@@ -31,26 +31,11 @@ public class Projectile
     {
         if (active)
         {
-            // if (location.x >= width - radius/2)
-            // {
-            //     velocity.x = -bounceResistance * velocity.x;
-            //     location.x = width - radius/2;
-            // }
-            // if (location.x <= radius/2)
-            // {
-            //     velocity.x = -bounceResistance * velocity.x;
-            //     location.x = radius/2;
-            // }
             if (location.y >= height - radius/2)
             {
                 velocity.y = -bounceResistance * velocity.y;
                 location.y = height - radius/2;
             }
-            // if (location.y <= radius/2)
-            // {
-            //     velocity.y = -bounceResistance * velocity.y;
-            //     location.y = radius/2;
-            // }
             if (acceleration.mag() > 1)
             {
                 velocity.add(PVector.mult(acceleration, frameTime));
