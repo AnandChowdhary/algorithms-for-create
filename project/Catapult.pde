@@ -9,6 +9,7 @@ class Catapult
 
   void display()
   {
+      imageMode(CENTER);
       fill(255, 0, 0);
       stroke(0);
       strokeWeight(10);
@@ -19,7 +20,7 @@ class Catapult
       }
       else
       {
-          
+
       }
       image(cat,width/4,height-height/4,width/16,height/2);
   }

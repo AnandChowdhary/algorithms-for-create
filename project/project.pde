@@ -18,15 +18,15 @@ PVector gravity;
 PVector startLocation;
 PImage cat;
 Catapult c;
+Background b;
 ArrayList<Projectile> proj = new ArrayList<Projectile>();
 
 
 void setup() 
 {
-  size(2000, 1000);
+  size(2000, 1000,P2D);
   setStuff();
   frameRate(fps);
-  imageMode(CENTER);
 }
 
 void draw() 
@@ -60,6 +60,7 @@ void setStuff()
   startLocation = new PVector(width/4, 3*height/5);
   cat = loadImage("catapult.png");
   c = new Catapult();
+  b = new Background();
   proj.add(new Projectile());
 }
 
@@ -79,6 +80,7 @@ void update()
 
 void display()
 {
+  b.display();
   for (int i = 0; i < proj.size(); ++i) 
   {
     proj.get(i).display();
