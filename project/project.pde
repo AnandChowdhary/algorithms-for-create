@@ -44,7 +44,6 @@ void draw()
   update();
   display();
   endMillis = millis();
-  println(screenOffset);
 }
 
 void setStuff()
