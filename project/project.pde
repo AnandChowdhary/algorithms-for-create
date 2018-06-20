@@ -12,6 +12,7 @@ float airResistance;
 float bounceResistance;
 float frameTime;
 float screenOffset;
+float projectileScreenPos;
 boolean aim;
 boolean fired;
 PVector gravity;
@@ -42,6 +43,7 @@ void draw()
   update();
   display();
   endMillis = millis();
+  println(screenOffset);
 }
 
 void setStuff()
@@ -58,6 +60,7 @@ void setStuff()
   fired = false;
   gravity = new PVector(0, 9.81);
   startLocation = new PVector(width/4, 3*height/5);
+  projectileScreenPos = width - startLocation.x;
   cat = loadImage("catapult.png");
   c = new Catapult();
   b = new Background();
@@ -76,6 +79,24 @@ void update()
       fired = false;
     }
   }
+  if (fired)
+  {
+    if (proj.get(0).location.x > projectileScreenPos)
+    {
+      screenOffset = -(proj.get(0).location.x - projectileScreenPos);
+    }
+  }
+  else
+  {
+    if (screenOffset < -100)
+    {
+      screenOffset += 100;
+    }
+    else
+    {
+      screenOffset = 0;
+    }
+  }
 }
 
 void display()
@@ -85,8 +106,6 @@ void display()
   {
     proj.get(i).display();
   }
-  if (proj.size() > 0)
-  screenOffset = -(proj.get(0).location.x - startLocation.x);
   c.display();
 }
 
