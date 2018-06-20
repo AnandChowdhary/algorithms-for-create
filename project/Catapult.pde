@@ -9,12 +9,19 @@ class Catapult
 
   void display()
   {
-    fill(255, 0, 0);
-    stroke(0);
-    strokeWeight(10);
-    line(mouseX, mouseY, location.x+width/34, location.y);
-    line(mouseX, mouseY, location.x-width/34, location.y);
-    image(cat,width/4,height-height/4,width/16,height/2);      
+      fill(255, 0, 0);
+      stroke(0);
+      strokeWeight(10);
+      if (aim)
+      {
+          line(mouseX, mouseY, location.x+width/34, location.y);
+          line(mouseX, mouseY, location.x-width/34, location.y);
+      }
+      else
+      {
+      
+      }
+      image(cat,width/4,height-height/4,width/16,height/2);
   }
 
   void move()

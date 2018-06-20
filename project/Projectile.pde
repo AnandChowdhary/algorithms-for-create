@@ -6,6 +6,7 @@ public class Projectile
     float deceleration;
     boolean done = false;
     boolean active = false;
+    float decFricCorrection;
 
     public Projectile () 
     {
@@ -13,6 +14,9 @@ public class Projectile
         velocity = new PVector(0, 0);
         acceleration = new PVector(0,0);
         deceleration = 0.8;
+        decFricCorrection = 1000;
+        decFricCorrection = decFricCorrection/fps;
+        decFricCorrection = decFricCorrection/realWorldCorrection;
     }
 
     void display()
@@ -55,11 +59,11 @@ public class Projectile
             if (acceleration.mag() > 1)
             {
                 velocity.add(PVector.mult(acceleration, frameTime));
-                acceleration.mult(pow(deceleration,frameTime/0.16));
+                acceleration.mult(pow(deceleration,frameTime/decFricCorrection));
             }
             location.add(PVector.mult(velocity, frameTime));
             velocity.add(PVector.mult(gravity, frameTime));
-            velocity.mult(pow(airResistance,frameTime/0.16));
+            velocity.mult(pow(airResistance,frameTime/decFricCorrection));
 
             if (velocity.y < 0.2 && location.y > (height - radius))
             {
