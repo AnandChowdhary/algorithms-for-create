@@ -64,14 +64,13 @@ public class Projectile
             location.add(PVector.mult(velocity, frameTime));
             velocity.add(PVector.mult(gravity, frameTime));
             velocity.mult(pow(airResistance,frameTime/decFricCorrection));
-
-            if (velocity.y < 0.2 && location.y > (height - radius))
+            if (abs(velocity.y) < 2 && location.y > (height - radius))
             {
                 velocity.y = 0;
-                if (velocity.x < 0.02 && location.y > (height - radius))
+                location.y = height - radius/2;
+                if (abs(velocity.x) < 2)
                 {
                     velocity.x = 0;
-                    location.y = height - radius/2;
                     done = true;
                 }
             }

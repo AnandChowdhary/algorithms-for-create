@@ -19,7 +19,7 @@ class Catapult
       }
       else
       {
-      
+          
       }
       image(cat,width/4,height-height/4,width/16,height/2);
   }
