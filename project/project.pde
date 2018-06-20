@@ -11,7 +11,9 @@ int radius;
 float airResistance;
 float bounceResistance;
 float frameTime;
+float screenOffset;
 boolean aim;
+boolean fired;
 PVector gravity;
 PVector startLocation;
 PImage cat;
@@ -32,6 +34,7 @@ void draw()
   int frameStart = millis();
   frameTime = 1000/fps;
   background(255);
+  translate(screenOffset,0);
   if (!(frameStart > endMillis + frameTime && frameStart < (endMillis + frameTime + 2)))
   {
       frameTime = frameTime + (frameStart - endMillis - frameTime);
@@ -50,7 +53,9 @@ void setStuff()
   airResistance = 0.99;
   bounceResistance = 0.75;
   frameTime = 1000/fps;
+  screenOffset = 0;
   aim = false;
+  fired = false;
   gravity = new PVector(0, 9.81);
   startLocation = new PVector(width/4, 3*height/5);
   cat = loadImage("catapult.png");
@@ -67,6 +72,7 @@ void update()
     if (proj.get(i).done)
     {
       proj.remove(i);
+      fired = false;
     }
   }
 }
@@ -77,18 +83,25 @@ void display()
   {
     proj.get(i).display();
   }
+  if (proj.size() > 0)
+  screenOffset = -(proj.get(0).location.x - startLocation.x);
   c.display();
 }
 
 void mouseReleased()
 {
-    proj.get(proj.size() - 1).acceleration = PVector.sub(startLocation, new PVector(mouseX, mouseY));
-    proj.get(proj.size() - 1).active = true;
-    proj.add(new Projectile());
-    aim = false;
+    if(!fired)
+    {
+      proj.get(proj.size() - 1).acceleration = PVector.sub(startLocation, new PVector(mouseX, mouseY));
+      proj.get(proj.size() - 1).active = true;
+      proj.add(new Projectile());
+      aim = false;
+      fired = true;
+    }
 }
 
 void mousePressed()
 {
+    if (!fired)
     aim = true;
 }
