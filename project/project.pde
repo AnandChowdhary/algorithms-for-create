@@ -11,6 +11,7 @@ int radius;
 float airResistance;
 float bounceResistance;
 float frameTime;
+float resetPace;
 float screenOffset;
 float projectileScreenPos;
 boolean aim;
@@ -55,6 +56,7 @@ void setStuff()
   airResistance = 0.99;
   bounceResistance = 0.75;
   frameTime = 1000/fps;
+  resetPace = 80;
   screenOffset = 0;
   aim = false;
   fired = false;
@@ -88,9 +90,9 @@ void update()
   }
   else
   {
-    if (screenOffset < -100)
+    if (screenOffset < -resetPace)
     {
-      screenOffset += 100;
+      screenOffset += resetPace;
     }
     else
     {
