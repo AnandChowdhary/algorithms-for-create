@@ -21,12 +21,7 @@ public class Projectile
 
     void display()
     {
-        if (!active)
-        {
-            noStroke();
-            ellipse(mouseX,mouseY, radius, radius);
-        }
-        else
+        if (active)
         {
             noStroke();
             ellipse(location.x, location.y, radius, radius);
