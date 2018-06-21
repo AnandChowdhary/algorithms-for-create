@@ -22,7 +22,7 @@ class Catapult
       {
 
       }
-      image(cat,width/4,height-height/4,width/16,height/2);
+      image(catpult,width/4,height-height/4,width/16,height/2);
   }
 
   void move()

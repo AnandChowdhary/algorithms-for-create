@@ -7,6 +7,7 @@ public class Projectile
     boolean done = false;
     boolean active = false;
     float decFricCorrection;
+    float theta;
 
     public Projectile () 
     {
@@ -17,6 +18,7 @@ public class Projectile
         decFricCorrection = 1000;
         decFricCorrection = decFricCorrection/fps;
         decFricCorrection = decFricCorrection/realWorldCorrection;
+        theta = 0;
     }
 
     void display()
@@ -54,6 +56,7 @@ public class Projectile
                     done = true;
                 }
             }
+            theta = velocity.heading2D();
         }
     }   
 }
