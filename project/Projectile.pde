@@ -28,6 +28,7 @@ public class Projectile
             noStroke();
             fill(255,0,0);
             ellipse(location.x, location.y, radius, radius);
+            updateParticles();
         }
     }
     void update()
@@ -66,4 +67,9 @@ public class Projectile
     {
 
     } 
+
+    void displayParticles()
+    {
+
+    }
 }

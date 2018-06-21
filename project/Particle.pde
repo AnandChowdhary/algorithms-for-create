@@ -17,16 +17,8 @@ public class Particle
         decay = random(0.8,0.99);
         radius = random(8,17);
     }
-
-    void run()
-    {
-        move();
-        display();
-    }
     
-    
-
-    void move()
+    void update()
     {
         location.add(velocity);
         alpha = alpha * decay;

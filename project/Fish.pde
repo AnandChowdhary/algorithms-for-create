@@ -18,6 +18,7 @@ public class Fish extends Projectile
             rotate(theta);
             image(fish,0,0,6*radius,4*radius);
             popMatrix();
+            displayParticles();
         }
     }
 
@@ -29,13 +30,21 @@ public class Fish extends Projectile
         }
         for (int i = 0; i < bubbles.size(); i++)
         {
-            bubbles.get(i).run();
+            bubbles.get(i).update();
             if (bubbles.get(i).remove())
             {
                 bubbles.remove(i);
             }
         }
     } 
+
+    void displayParticles()
+    {
+        for (int i = 0; i < bubbles.size(); i++)
+        {
+            bubbles.get(i).display();
+        }   
+    }
 
     void fillList(int x)
     {
