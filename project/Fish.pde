@@ -12,13 +12,13 @@ public class Fish extends Projectile
     {
         if (active)
         {
+            displayParticles();
             imageMode(CENTER);
             pushMatrix();
             translate(location.x,location.y);
             rotate(theta);
             image(fish,0,0,6*radius,4*radius);
             popMatrix();
-            displayParticles();
         }
     }
 
