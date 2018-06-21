@@ -11,10 +11,6 @@ public class Particle
     {
         location = new PVector(l.x,l.y);
         velocity = new PVector(v.x,v.y);
-        velocity.rotate(radians(180));
-        float angle = random(-40,40);
-        velocity.rotate(radians(angle));
-        velocity.mult(0.1);
         decay = random(0.8,0.99);
         radius = random(8,17);
     }
