@@ -26,10 +26,11 @@ public class Projectile
         if (active)
         {
             noStroke();
+            fill(255,0,0);
             ellipse(location.x, location.y, radius, radius);
         }
     }
-    void move()
+    void update()
     {
         if (active)
         {
@@ -57,6 +58,12 @@ public class Projectile
                 }
             }
             theta = velocity.heading2D();
+            updateParticles();
         }
-    }   
+    }  
+
+    void updateParticles()
+    {
+
+    } 
 }

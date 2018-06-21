@@ -36,14 +36,13 @@ void draw()
 {
   int frameStart = millis();
   frameTime = 1000/fps;
-  background(255);
   translate(screenOffset,0);
   if (!(frameStart > endMillis + frameTime && frameStart < (endMillis + frameTime + 2)))
   {
       frameTime = frameTime + (frameStart - endMillis - frameTime);
   }
-  update();
   display();
+  update();
   endMillis = millis();
 }
 
@@ -67,7 +66,7 @@ void setStuff()
   fish = loadImage("fish.png");
   c = new Catapult();
   b = new Background();
-  proj.add(new Projectile());
+  proj.add(new Fish());
 }
 
 void update()
@@ -75,7 +74,7 @@ void update()
   frameTime = frameTime/realWorldCorrection;
   for (int i = 0; i < proj.size(); ++i) 
   {
-    proj.get(i).move();
+    proj.get(i).update();
     if (proj.get(i).done)
     {
       proj.remove(i);
