@@ -23,6 +23,8 @@ PImage fish;
 PImage fish2;
 PImage fish3;
 PImage fish4;
+PImage bird;
+Flock f;
 Catapult c;
 Background b;
 ArrayList<Projectile> proj = new ArrayList<Projectile>();
@@ -71,8 +73,10 @@ void setStuff()
   fish2 = loadImage("fish2.png");
   fish3 = loadImage("fish3.png");
   fish4 = loadImage("fish4.png");
+    bird = loadImage("bird.png");
   c = new Catapult();
   b = new Background();
+  f = new Flock(100);
   fillReserve();
 }
 
@@ -131,6 +135,7 @@ void update()
       proj.get(0).location = new PVector(mouseX,mouseY);
     }
   }
+  f.update();
 }
 
 void display()
@@ -145,6 +150,7 @@ void display()
     reserve.get(i).display();
   }
   c.display();
+  f.display();
 }
 
 void mousePressed()
