@@ -14,7 +14,7 @@ public class Flock
     {
         for (int i = 0; i < size; ++i) 
         {
-            birds.add(new Bird(random(width/4,3*width/4),random(height/4,3*height/4),random(-1,1),random(-1,1)));            
+            birds.add(new Bird(random(0,3*width),random(0,height/2),random(-1,1),random(-0.1,0.1)));            
         }
     }
 

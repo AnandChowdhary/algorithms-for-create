@@ -20,23 +20,19 @@ public class Bird
         acceleration = new PVector(0,0);
         if (location.x < size/2)
         {
-            velocity.x = -velocity.x;
-            location.x = size/2;
+            location.x = 3*width-size/2;
         }
         if (location.x > 3*width-size/2)
-        {
-            velocity.x = -velocity.x;   
-            location.x = 3*width-size/2;
+        {  
+            location.x = size/2;
         }
         if (location.y < size/2)
         {
-            velocity.y = -velocity.y;
-            location.y = size/2;
+            location.y = height/2-size/2;
         }
         if (location.y > height/2-size/2)
         {
-            velocity.y = -velocity.y;
-            location.y = height/2-size/2;
+            location.y = size/2;
         }
         if (velocity.mag() > maxSpeed)
         {
