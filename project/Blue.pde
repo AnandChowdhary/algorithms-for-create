@@ -10,16 +10,13 @@ public class Blue extends Projectile
 
     void display()
     {
-        if (active)
-        {
-            displayParticles();
-            imageMode(CENTER);
-            pushMatrix();
-            translate(location.x,location.y);
-            rotate(theta);
-            image(fish3,0,0,6*radius,4*radius);
-            popMatrix();
-        }
+        displayParticles();
+        imageMode(CENTER);
+        pushMatrix();
+        translate(location.x,location.y);
+        rotate(theta);
+        image(fish3,0,0,6*radius,4*radius);
+        popMatrix();
     }
 
     void updateParticles()

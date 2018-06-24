@@ -1,6 +1,6 @@
 /*
 Program by Wouter Couwenbergh & Anand Chowdhary
-*/
+ */
 
 
 
@@ -31,7 +31,7 @@ ArrayList<Projectile> reserve = new ArrayList<Projectile>();
 
 void setup() 
 {
-  size(2000, 1000,P2D);
+  size(2000, 1000, P2D);
   setStuff();
   frameRate(fps);
 }
@@ -40,10 +40,10 @@ void draw()
 {
   int frameStart = millis();
   frameTime = 1000/fps;
-  translate(screenOffset,0);
+  translate(screenOffset, 0);
   if (!(frameStart > endMillis + frameTime && frameStart < (endMillis + frameTime + 2)))
   {
-      frameTime = frameTime + (frameStart - endMillis - frameTime);
+    frameTime = frameTime + (frameStart - endMillis - frameTime);
   }
   display();
   update();
@@ -89,7 +89,7 @@ void arangeReserve()
 {
   for (int i = 0; i < reserve.size(); i++)
   {
-    reserve.get(i).location = new PVector(startLocation.x - (i+1)*6*radius,height - 1.5*radius);
+    reserve.get(i).location = new PVector(startLocation.x - (i+1)*6*radius, height - 1.5*radius);
   }
 }
 
@@ -111,21 +111,15 @@ void update()
     {
       screenOffset = -(proj.get(0).location.x - projectileScreenPos);
     }
-  }
-  else
+  } else
   {
     if (screenOffset < -resetPace)
     {
       screenOffset += resetPace;
-    }
-    else
+    } else
     {
       screenOffset = 0;
     }
-  }
-  if (mousePressed)
-  {
-    proj.get(0).location = new PVector(mouseX,mouseY);
   }
 }
 
@@ -146,34 +140,32 @@ void display()
 void mousePressed()
 {
 
-    if(!fired)
+  if (!fired)
+  {
+    aim = true;
+    if (reserve != null)
     {
-      aim = true;
-      if (reserve != null)
-      {
-        arangeReserve();
-        proj.add(reserve.get(0));
-        reserve.remove(0);
-        proj.get(0).location = new PVector(mouseX,mouseY);
-      }
+      arangeReserve();
+      proj.add(reserve.get(0));
+      reserve.remove(0);
+      proj.get(0).location = startLocation.copy();
     }
+  }
 }
 
 void mouseReleased()
 {
-    if(!fired)
+  if (!fired)
+  {
+    if (reserve != null)
     {
-      if (reserve != null)
-      {
-        proj.get(0).location = startLocation.copy();
-        proj.get(0).acceleration = PVector.sub(startLocation, new PVector(mouseX, mouseY));
-        proj.get(0).active = true;
-        aim = false;
-        fired = true;
-      }
-      else
-      {
-        fillReserve();
-      }
+      proj.get(0).acceleration = PVector.sub(startLocation, new PVector(mouseX, mouseY));
+      proj.get(0).active = true;
+      aim = false;
+      fired = true;
+    } else
+    {
+      fillReserve();
     }
+  }
 }
