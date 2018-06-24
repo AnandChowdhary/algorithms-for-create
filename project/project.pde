@@ -125,7 +125,11 @@ void update()
   }
   if (mousePressed)
   {
-    proj.get(0).location = new PVector(mouseX,mouseY);
+    if (proj.size() > 0)
+    {
+      if (!fired && !proj.get(0).active)
+      proj.get(0).location = new PVector(mouseX,mouseY);
+    }
   }
 }
 
@@ -145,16 +149,23 @@ void display()
 
 void mousePressed()
 {
-
     if(!fired)
     {
       aim = true;
-      if (reserve != null)
+      if (reserve.size() > 0)
       {
-        arangeReserve();
         proj.add(reserve.get(0));
         reserve.remove(0);
         proj.get(0).location = new PVector(mouseX,mouseY);
+        arangeReserve();
+      }
+      else
+      {
+        fillReserve();
+        proj.add(reserve.get(0));
+        reserve.remove(0);
+        proj.get(0).location = new PVector(mouseX,mouseY);
+        arangeReserve();
       }
     }
 }
@@ -163,17 +174,13 @@ void mouseReleased()
 {
     if(!fired)
     {
-      if (reserve != null)
+      if (proj.size() > 0)
       {
         proj.get(0).location = startLocation.copy();
         proj.get(0).acceleration = PVector.sub(startLocation, new PVector(mouseX, mouseY));
         proj.get(0).active = true;
         aim = false;
         fired = true;
-      }
-      else
-      {
-        fillReserve();
       }
     }
 }
