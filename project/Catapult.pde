@@ -7,6 +7,7 @@ class Catapult
     location = startLocation.copy();
   }
 
+  //displays the catapult and the sling when aiming.
   void display()
   {
       imageMode(CENTER);

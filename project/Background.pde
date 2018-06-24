@@ -1,3 +1,5 @@
+//Sets the background image;
+
 public class Background 
 {
     PImage back;

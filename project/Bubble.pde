@@ -1,6 +1,9 @@
+//A bubble as particle;
+
 public class Bubble extends Particle
 {
     color c;
+    
     public Bubble (PVector l, PVector v, color c_) 
     {
         super(l,v);

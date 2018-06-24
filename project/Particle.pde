@@ -15,6 +15,7 @@ public class Particle
         radius = random(8,17);
     }
 
+    //moves the particle and updates its opacity
     void update()
     {
         location.add(velocity);
@@ -26,9 +27,9 @@ public class Particle
 
     }
 
+    //check if the particle can be removed
     boolean remove()
     {
-        
         if (alpha < 0.1)
         {
             return true;

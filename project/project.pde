@@ -1,8 +1,8 @@
 /*
-Program by Wouter Couwenbergh & Anand Chowdhary
+  Program by Wouter Couwenbergh & Anand Chowdhary. 
+  AngryFish, inspired by angry birds.
+  Made June 2018
 */
-
-
 
 int fps;
 int endMillis;

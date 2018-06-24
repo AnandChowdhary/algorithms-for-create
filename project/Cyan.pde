@@ -1,3 +1,5 @@
+//A cyan fish as projectile.
+
 public class Cyan extends Projectile
 {
     ArrayList<Bubble> bubbles = new ArrayList<Bubble>();
@@ -19,6 +21,7 @@ public class Cyan extends Projectile
         popMatrix();
     }
 
+    //Updates the particles associated with this fish
     void updateParticles()
     {
         if (bubbles.size() < maxSize)
@@ -35,6 +38,7 @@ public class Cyan extends Projectile
         }
     } 
 
+    //Displays the particles associated with this fish
     void displayParticles()
     {
         for (int i = 0; i < bubbles.size(); i++)
@@ -43,6 +47,7 @@ public class Cyan extends Projectile
         }   
     }
 
+    //fills the ArrayList with the particles associated with this fish
     void fillList(int x)
     {
         for (int i = x; i < maxSize; i++)
