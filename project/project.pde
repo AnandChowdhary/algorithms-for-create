@@ -20,9 +20,13 @@ PVector gravity;
 PVector startLocation;
 PImage catpult;
 PImage fish;
+PImage fish2;
+PImage fish3;
+PImage fish4;
 Catapult c;
 Background b;
 ArrayList<Projectile> proj = new ArrayList<Projectile>();
+ArrayList<Projectile> magazine = new ArrayList<Projectile>();
 
 
 void setup() 
@@ -64,9 +68,12 @@ void setStuff()
   projectileScreenPos = width - startLocation.x;
   catpult = loadImage("catapult.png");
   fish = loadImage("fish.png");
+  fish2 = loadImage("fish2.png");
+  fish3 = loadImage("fish3.png");
+  fish4 = loadImage("fish4.png");
   c = new Catapult();
   b = new Background();
-  proj.add(new Fish());
+  proj.add(new Orange());
 }
 
 void update()
@@ -117,7 +124,7 @@ void mouseReleased()
     {
       proj.get(proj.size() - 1).acceleration = PVector.sub(startLocation, new PVector(mouseX, mouseY));
       proj.get(proj.size() - 1).active = true;
-      proj.add(new Fish());
+      proj.add(new Orange());
       aim = false;
       fired = true;
     }

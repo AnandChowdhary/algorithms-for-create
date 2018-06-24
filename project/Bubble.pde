@@ -1,7 +1,7 @@
 public class Bubble extends Particle
 {
-
-    public Bubble (PVector l, PVector v) 
+    color c;
+    public Bubble (PVector l, PVector v, color c_) 
     {
         super(l,v);
         velocity = v.copy();
@@ -10,12 +10,13 @@ public class Bubble extends Particle
         float angle = random(-40,40);
         velocity.rotate(radians(angle));
         velocity.mult(random(1,8));
+        c = c_;
     }
 
     void display()
     {
         noStroke();
-        fill(102,207,247,int(alpha*255));
+        fill(c,int(alpha*255));
         ellipse(location.x,location.y,radius,radius);
     }
 

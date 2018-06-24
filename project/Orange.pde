@@ -1,9 +1,9 @@
-public class Fish extends Projectile
+public class Orange extends Projectile
 {
     ArrayList<Bubble> bubbles = new ArrayList<Bubble>();
     int maxSize = 50;
 
-    public Fish () 
+    public Orange() 
     {
         super();
     }
@@ -50,7 +50,7 @@ public class Fish extends Projectile
     {
         for (int i = x; i < maxSize; i++)
         {
-            bubbles.add(new Bubble(location,velocity));
+            bubbles.add(new Bubble(location,velocity,color(255,155,23)));
         }
     }
 }
