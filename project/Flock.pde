@@ -1,20 +1,19 @@
 public class Flock 
 {
     ArrayList<Bird> birds = new ArrayList<Bird>();
-    float maxAcc = 0.5;
-    float seperation = 20;
-    float avoWeight = 1.0;
-    float cohArea = 60;
-    float cohWeight = 0.2;
-    float aliArea = 50;
-    float aliWeight = 1.4;
-    float doggieDist = 5;
+    float maxAcc = 0.25;
+    float seperation = 40;
+    float avoWeight = 1.2;
+    float cohArea = 50;
+    float cohWeight = 1;
+    float aliArea = 60;
+    float aliWeight = 1.2;
 
     public Flock (int size) 
     {
         for (int i = 0; i < size; ++i) 
         {
-            birds.add(new Bird(random(0,3*width),random(0,height/2),random(-1,1),random(-0.1,0.1)));            
+            birds.add(new Bird(random(0,4*width),random(0,height/2),random(-1,1),random(-0.1,0.1)));            
         }
     }
 
