@@ -186,7 +186,7 @@ void nextLevel() {
   fillReserve();
   proj.add(reserve.get(0));
   reserve.remove(0);
-  proj.get(0).location = new PVector(mouseX, mouseY);
+  proj.get(0).location = startLocation.copy();
   arangeReserve();
 }
 
@@ -204,7 +204,11 @@ void mousePressed()
     } 
     else if(reserve.size() > 0)
     {
+      proj.get(0).location = new PVector(mouseX, mouseY);
       level = 0;
+    }
+    else
+    {
       nextLevel();
     }
   }
