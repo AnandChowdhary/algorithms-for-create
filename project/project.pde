@@ -140,6 +140,12 @@ void update()
       proj.remove(i);
       fired = false;
       if (obstacles.size() == 0) nextLevel();
+      if (reserve.size() == 0) {
+        level = 0;
+        translate(0, 0);
+        initializeLevel();
+        playing = false;
+      }
     }
   }
   if (fired)
@@ -212,9 +218,7 @@ void mousePressed()
   if (!playing) {
     playing = true;
     started = true;
-    return;
-  }
-  if (!fired)
+  } else if (!fired)
   {
     aim = true;
     if (reserve.size() > 0 && proj.size() < 1)
@@ -226,7 +230,6 @@ void mousePressed()
     } else if (reserve.size() > 0)
     {
       proj.get(0).location = new PVector(mouseX, mouseY);
-      level = 0;
     } else
     {
       nextLevel();
