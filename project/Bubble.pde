@@ -13,13 +13,17 @@ public class Bubble extends Particle {
 	 */
 	public Bubble (PVector location, PVector velocityOriginal, color colorOriginal) {
 		super(location, velocityOriginal);
+		c = colorOriginal;
+
+		// Copy, normalize, and rotate velocity
 		velocity = velocityOriginal.copy();
 		velocity.normalize();
 		velocity.rotate(radians(180));
+
+		// Rotate bubble by a random angle
 		float angle = random(-40, 40);
 		velocity.rotate(radians(angle));
 		velocity.mult(random(1, 8));
-		c = colorOriginal;
 	}
 
 	/*

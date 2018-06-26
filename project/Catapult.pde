@@ -20,10 +20,11 @@ class Catapult {
 		fill(255, 0, 0);
 		stroke(0);
 		strokeWeight(10);
+		// Show catapult lines during aiming
 		if (aim) {
 			line(mouseX, mouseY, location.x + width / 34, location.y);
 			line(mouseX, mouseY, location.x - width / 34, location.y);
-		} else {}
+		}
 		image(catpult, width / 4, height - height / 4, width / 16, height / 2);
 	}
 
