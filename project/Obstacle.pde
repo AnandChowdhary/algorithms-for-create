@@ -47,6 +47,7 @@ public class Obstacle {
 		return;
 		projectileLocation = location;
 		image(treasure, obstaclePosition.x, obstaclePosition.y);
+		// Check for collisions
 		if (
 			projectileLocation.x > obstaclePosition.x && projectileLocation.x < (obstaclePosition.x + obstacleSize.x) &&
 			projectileLocation.y > obstaclePosition.y && projectileLocation.y < (obstaclePosition.y + obstacleSize.y)

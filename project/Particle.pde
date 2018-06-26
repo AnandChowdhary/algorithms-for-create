@@ -17,27 +17,25 @@ public class Particle {
 	public Particle(PVector l, PVector v) {
 		location = new PVector(l.x, l.y);
 		velocity = new PVector(v.x, v.y);
+
+		// Randomly decide decay and radius for particle
 		decay = random(0.8, 0.99);
 		radius = random(8, 17);
 	}
 
 	/*
-	* Moves the particle and updates its opacity
-	*/
+	 * Moves the particle and updates its opacity
+	 */
 	void update() {
 		location.add(velocity);
 		alpha = alpha * decay;
 	}
 
 	/*
-	* Check if the particle can be removed
-	*/
+	 * Check if the particle can be removed
+	 */
 	boolean remove() {
-		if (alpha < 0.1) {
-			return true;
-		} else {
-			return false;
-		}
+		return alpha < 0.25;
 	}
 
 }

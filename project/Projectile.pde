@@ -46,23 +46,27 @@ public class Projectile {
 	 */
 	void update() {
 		if (active) {
-			if (location.y <= height / 2 + radius / 2) //keep the projectile above ground
-			{
+
+			// Keep the projectile above ground
+			if (location.y <= height / 2 + radius / 2) {
 				velocity.y = -bounceResistance * velocity.y;
 				location.y = height / 2 + radius / 2;
 			}
-			if (acceleration.mag() > 1) {
-				velocity.add(PVector.mult(acceleration, frameTime)); //adds the force of the catapult
-				acceleration.mult(pow(deceleration, frameTime / decFricCorrection)); //deminishes the force of the catapult
-			}
-			location.add(PVector.mult(velocity, frameTime)); //adds the velocity to the location
-			velocity.add(PVector.mult(gravity, frameTime)); //adds the gravity to the velocity
-			velocity.mult(pow(airResistance, frameTime / decFricCorrection));
-			//adds the friction to the velocity
 
+			if (acceleration.mag() > 1) {
+				velocity.add(PVector.mult(acceleration, frameTime)); // Adds the force of the catapult
+				acceleration.mult(pow(deceleration, frameTime / decFricCorrection)); // Deminishes the force of the catapult
+			}
+
+			location.add(PVector.mult(velocity, frameTime)); // Adds the velocity to the location
+			velocity.add(PVector.mult(gravity, frameTime)); // Adds the gravity to the velocity
+			velocity.mult(pow(airResistance, frameTime / decFricCorrection));
+
+			// Adds the friction to the velocity
 			if (abs(
 				velocity.y
-			) < 2 && location.y < (height / 2 + radius)) //figure out when the projectile stopped moving
+			) < 2 && location.y < (height / 2 + radius))
+			// Figure out when the projectile stopped moving
 			{
 				velocity.y = 0;
 				location.y = height / 2 + radius / 2;
@@ -71,7 +75,7 @@ public class Projectile {
 					done = true;
 				}
 			}
-			theta = velocity.heading2D(); //getting the angle of the projectile's direction
+			theta = velocity.heading2D(); // Getting the angle of the projectile's direction
 		}
 	}
 
