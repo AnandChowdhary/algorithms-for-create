@@ -1,4 +1,6 @@
-//Projectile to be shot with the catapult
+/*
+ * Class for projectile to be shot with the catapult
+ */
 public class Projectile {
 	PVector location;
 	PVector velocity;
@@ -9,6 +11,10 @@ public class Projectile {
 	float decFricCorrection;
 	float theta;
 
+	/*
+	 * Initialize projectile variables
+	 * @constructor
+	 */
 	public Projectile() {
 		location = startLocation.copy();
 		velocity = new PVector(0, 0);
@@ -20,6 +26,9 @@ public class Projectile {
 		theta = 0;
 	}
 
+	/*
+	 * Displays the projectile if it's active
+	 */
 	void display() {
 		if (active) {
 			noStroke();
@@ -29,11 +38,12 @@ public class Projectile {
 			rotate(theta);
 			ellipse(location.x, location.y, radius, radius);
 			popMatrix();
-			updateParticles();
 		}
 	}
 
-	//moves the projectile.
+	/*
+	 * Updates values for projectile
+	 */
 	void update() {
 		if (active) {
 			if (location.y <= height / 2 + radius / 2) //keep the projectile above ground
@@ -62,13 +72,7 @@ public class Projectile {
 				}
 			}
 			theta = velocity.heading2D(); //getting the angle of the projectile's direction
-			updateParticles();
 		}
 	}
 
-	void updateParticles() {}
-
-	void displayParticles() {}
-
 }
-

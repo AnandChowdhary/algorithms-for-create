@@ -1,11 +1,20 @@
+/*
+ * Class for the main catapult
+ */
 class Catapult {
 	PVector location;
 
+	/*
+	 * Initializes variables for catapult
+	 * @constructor
+	 */
 	public Catapult() {
 		location = startLocation.copy();
 	}
 
-	//displays the catapult and the sling when aiming.
+	/*
+	 * Displays the catapult and the sling when aiming.
+	 */
 	void display() {
 		imageMode(CENTER);
 		fill(255, 0, 0);
@@ -17,8 +26,6 @@ class Catapult {
 		} else {}
 		image(catpult, width / 4, height - height / 4, width / 16, height / 2);
 	}
-
-	void move() {}
 
 }
 
