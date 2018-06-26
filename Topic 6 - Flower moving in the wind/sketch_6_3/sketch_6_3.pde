@@ -1,3 +1,9 @@
+/*
+  Birds that fly around using flocking, with a dog which they avoid.
+  made by Wouter Couwenbergh
+  June 2018
+*/
+
 Stem[] stalks;
 ArrayList<Wind> winds = new ArrayList<Wind>();
 float dist = 40;
@@ -28,8 +34,11 @@ void draw()
     }
     if (mousePressed)
     {
+        //add a new wind
         winds.add(new Wind(0.0001,50));
     }
+    
+    //go through all the winds and update
     for (int i = 0; i < winds.size(); i++)
     {
         winds.get(i).run();
@@ -40,14 +49,18 @@ void draw()
     }
 }
 
+//fill the array with stalks
 void fillArray()
 {
     float x = dist/2;
     float y = 0;
     int index = 0;
     float xOffset = 0;
+    
+    //add stalks for a row
     for (int i = 0; i < rows; i++)
     {
+        //fill a row with x nr of stalks
         for (int j = 0; j < nrStalksRow; j++)
         {
             stalks[index] = new Stem(x,y,sizeStalks,stalkSegments);

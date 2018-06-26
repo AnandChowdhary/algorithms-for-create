@@ -14,6 +14,8 @@ class Wind
     
     void run()
     {
+        //go through the rows of stalks and add the wind
+        //going to the next row after a new frame
         if (counter < nrStalksRow)
         {
             for (int i = 0; i < rows; i++)

@@ -24,6 +24,8 @@ public class Bird
         location.add(velocity);
         velocity.add(acceleration);
         acceleration = new PVector(0,0);
+        
+        //keep the bird within the sketch boundaries.
         if (location.x < size/2)
         {
             velocity.x = -velocity.x;

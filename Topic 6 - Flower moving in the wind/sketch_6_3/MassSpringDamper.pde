@@ -11,17 +11,17 @@ public class MassSpringDamper
     float spring;
     float size;
 
-    public MassSpringDamper (float m, float s, float d, float f, float si,PVector loc) 
+    public MassSpringDamper (float mass_, float spring_, float damper_, float force_, float size_, PVector location_) 
     {
-        location = loc.copy();
+        location = location_.copy();
         theta = 0;
         acceleration = 0;
         velocity = 0;
-        mass = m;
-        force = f;
-        spring = s;
-        damper = d;
-        size = si;
+        mass = mass_;
+        force = force_;
+        spring = spring_;
+        damper = damper_;
+        size = size_;
         endloc = new PVector(location.x, location.y-size);
     }
     

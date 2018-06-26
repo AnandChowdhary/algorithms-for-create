@@ -17,6 +17,8 @@ public class Stem
         nr = nr_;
         segmentSize = size/nr;
         base = new PVector(x,height-y);
+        
+        //create all segments
         for(int i = 0; i < nr; i++)
         {         
             if (i < nr - 1)
@@ -35,6 +37,7 @@ public class Stem
 
     void run()
     {
+        //pass the forces down from above and the velocity from below
         for (int i = msd.size()-1; i >= 0; i--)
         {
             if (i == 0)
@@ -51,7 +54,8 @@ public class Stem
             }
         }
         force = 0;
-        float t = 0;
+        float angle = 0;
+        //set the angle for each segment
         for (int i = 0; i < msd.size(); i++)
         {
             if (i == 0)
@@ -60,8 +64,8 @@ public class Stem
             }
             else 
             {
-                t += msd.get(i-1).theta;
-                msd.get(i).display(base,msd.get(i-1).endloc,t);
+                angle += msd.get(i-1).theta;
+                msd.get(i).display(base,msd.get(i-1).endloc,angle);
             }
         }
     }

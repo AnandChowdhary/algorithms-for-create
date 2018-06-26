@@ -1,3 +1,10 @@
+/*
+  Makes particles move as if they were being shot from a rocket for example.
+  The stream of particles follow the mouse of the user, but is restricted to a certain area.
+  made by Wouter Couwenbergh
+  June 2018
+*/
+
 ArrayList<Particle> particles = new ArrayList<Particle>();
 int maxSize = 100;
 PVector loc;
@@ -10,8 +17,10 @@ void setup()
 void draw() 
 {
     background(255);
+    //restricts the mousex en mousey to a certain area
     loc = new PVector(constrain(mouseX,width/3,2*width/3),constrain(mouseY,height/3,2*height/3));
     
+    //run the particles, move and display them.
     for (int i = 0; i < particles.size(); i++)
     {
         particles.get(i).run();
@@ -23,6 +32,7 @@ void draw()
     println(particles.size());
 }
 
+//fills the arraylist to the desired level
 void fillList(int x)
 {
     for (int i = x; i < maxSize; i++)
@@ -31,6 +41,7 @@ void fillList(int x)
     }
 }
 
+//makes the particles appear whenever the mouse is pressed
 void mouseClicked()
 {
     fillList(particles.size());

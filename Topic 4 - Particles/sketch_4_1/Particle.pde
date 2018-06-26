@@ -23,7 +23,7 @@ public class Particle
          move();
          display();
     }
-
+    
     void move()
     {
         location.add(velocity);
@@ -38,6 +38,8 @@ public class Particle
         ellipse(location.x, location.y, radius, radius);
     }
 
+    //if the alpha value of the fill is too low, the particle can be removed.
+    //also if it has moved of screen it can be removed.
     boolean remove()
     {
         if (alpha < 0.1 || location.x > width || location.x < 0 || location.y > height || location.y < 0)

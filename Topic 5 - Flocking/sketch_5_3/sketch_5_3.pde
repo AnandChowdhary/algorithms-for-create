@@ -1,3 +1,9 @@
+/*
+  Birds that fly around using flocking, with a dog which they avoid.
+  made by Wouter Couwenbergh
+  June 2018
+*/
+
 PImage bird;
 Flock f;
 Dog doggie;

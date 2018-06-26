@@ -54,6 +54,7 @@ public class Particle
         fill(r,0,0,int(alpha * 255));
         PVector temploc = new PVector(location.x,location.y);
         temploc.rotate(-radians(45));
+        //chooses a shape depending on what random number the int has gotten
         switch (shape) 
         {
             case 0 :
