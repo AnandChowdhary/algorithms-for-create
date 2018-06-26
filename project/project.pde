@@ -65,7 +65,7 @@ void setStuff()
   screenOffset = 0;
   aim = false;
   fired = false;
-  gravity = new PVector(0, 9.81);
+  gravity = new PVector(0, -9.81);
   startLocation = new PVector(width/4, 3*height/5);
   projectileScreenPos = width - startLocation.x;
   catpult = loadImage("catapult.png");

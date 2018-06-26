@@ -11,9 +11,14 @@ public class Flock
 
     public Flock (int size) 
     {
+        float direction = int(random(-1,2));
+        while (direction == 0)
+        {
+          direction = int(random(-1,1));
+        }
         for (int i = 0; i < size; ++i) 
         {
-            birds.add(new Bird(random(0,4*width),random(0,height/2),random(-1,1),random(-0.1,0.1)));            
+            birds.add(new Bird(random(0,4*width),random(0,height/2),direction * random(0,2),random(-1,1)));            
         }
     }
 
