@@ -1,3 +1,5 @@
+//one of the dots being placed on the screen
+
 public class Dots 
 {
     PVector location;

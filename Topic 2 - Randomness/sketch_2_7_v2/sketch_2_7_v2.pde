@@ -1,3 +1,9 @@
+/*
+  Makes a landschape using two-dimensional Perlin noise.
+  made by Wouter Couwenbergh
+  June 2018
+*/
+
 float increment = 0.02;
 int rows;
 int columns;
@@ -20,15 +26,21 @@ void setup()
 void draw() 
 {
     background(255);
+    //rotates the plane backwards
     rotateX(PI/4);
+    
     float yoff = 0;
+    //cycles through the y points
     for (int i = 0; i < rows; i++) 
     {
         yoff +=increment;
+        //start a triangle strip for this row
         beginShape(TRIANGLE_STRIP);
         float xoff = 0;
+        //cycles through the x points
         for (int j = 0; j < columns; j++) 
         {
+            //adds two points for the triangle strip
             xoff += increment;
             float z = noise(xoff*scale,yoff*scale,zoff)*elevation;
             vertex(j*scale,i*scale,z);
@@ -39,6 +51,7 @@ void draw()
         endShape();
     }
     
+    //changes the third variable of the noise to make the landscape change
     zoff += zIncrement;
 
     /*

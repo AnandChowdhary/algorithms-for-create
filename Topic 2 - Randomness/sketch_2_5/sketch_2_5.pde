@@ -1,3 +1,10 @@
+/*
+  Extends the example Noise1D from the examples of the Nature of code
+  to two dimensions.
+  made by Wouter Couwenbergh
+  June 2018
+*/
+
 float xoff;
 float xincrement; 
 float yoff;
