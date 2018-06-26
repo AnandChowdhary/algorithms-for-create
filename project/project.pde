@@ -60,7 +60,7 @@ void draw()
   
   if (!playing) {
     if (started) {
-      image(gameOverScreen, 0, 0);
+      image(gameOverScreen, 1366/2, 768/2);
     } else {
       image(introScreen, 0, 0);
     }
@@ -75,7 +75,7 @@ void draw()
     endMillis = millis();
     fill(0);
     textSize(32); 
-    text("level " + level, 10, 30);
+    text("Level " + level, 20, 40);
   }
 }
 
