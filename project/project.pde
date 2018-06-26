@@ -195,13 +195,14 @@ void mousePressed()
   if (!fired)
   {
     aim = true;
-    if (reserve.size() > 0)
+    if (reserve.size() > 0 && proj.size() < 1)
     {
       proj.add(reserve.get(0));
       reserve.remove(0);
       proj.get(0).location = new PVector(mouseX, mouseY);
       arangeReserve();
-    } else
+    } 
+    else if(reserve.size() > 0)
     {
       level = 0;
       nextLevel();
