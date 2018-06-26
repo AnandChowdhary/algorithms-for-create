@@ -1,3 +1,9 @@
+/*
+  Makes a ball move along a parabollic arc
+  made by Wouter Couwenbergh
+  June 2018
+*/
+
 ArrayList<PVector> parabolaPoints = new ArrayList<PVector>();
 PVector location;
 PVector velocity;
