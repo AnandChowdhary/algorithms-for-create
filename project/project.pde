@@ -38,7 +38,7 @@ ArrayList<Projectile> proj = new ArrayList<Projectile>();
 ArrayList<Projectile> reserve = new ArrayList<Projectile>();
 ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
 
-void setup()  {
+void setup() {
 	playing = false;
 	level = 0;
 	size(1366, 768, P2D);
@@ -53,13 +53,13 @@ void initializeLevel() {
 	}
 }
 
-void draw()  {
+void draw() {
 	int frameStart = millis();
 	frameTime = 1000/fps;
 	
 	if (!playing) {
 		if (started) {
-			image(gameOverScreen, 1366/2, 768/2);
+			image(gameOverScreen, width / 2, height / 2);
 		} else {
 			image(introScreen, 0, 0);
 		}
@@ -126,7 +126,7 @@ void arangeReserve() {
 
 void update() {
 	frameTime = frameTime/realWorldCorrection;
-	for (int i = 0; i < proj.size(); ++i)  {
+	for (int i = 0; i < proj.size(); ++i) {
 		proj.get(i).update();
 		if (proj.get(i).done) {
 			proj.remove(i);
@@ -165,7 +165,7 @@ void update() {
 
 void display() {
 	b.display();
-	for (int i = 0; i < proj.size(); ++i)  {
+	for (int i = 0; i < proj.size(); ++i) {
 		proj.get(i).display();
 	}
 	for (int i = 0; i < reserve.size(); i++) {

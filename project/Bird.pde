@@ -2,11 +2,8 @@
  * Class for flying birds
  */
 public class Bird {
-	PVector location;
-	PVector velocity;
-	PVector acceleration;
-	float size = 40;
-	float maxSpeed = 5;
+	PVector location, velocity, acceleration;
+	float size, maxSpeed;
 
 	/*
 	 * Initializes bird variables
@@ -17,6 +14,8 @@ public class Bird {
 	 * @param {float} dy - Y-cordinate of bird's speed
 	 */
 	public Bird(float x, float y, float dx, float dy) {
+		size = 40;
+		maxSpeed = 5;
 		location = new PVector(x, y);
 		velocity = new PVector(dx, dy);
 		acceleration = new PVector(0, 0);
@@ -54,6 +53,7 @@ public class Bird {
 	 */
 	void display() {
 		imageMode(CENTER);
+		// Calculate angle of rotation
 		float theta = velocity.heading2D() + radians(90);
 		pushMatrix();
 		translate(location.x, location.y);
