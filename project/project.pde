@@ -132,7 +132,11 @@ void update()
     if (proj.size() > 0)
     {
       if (!fired && !proj.get(0).active)
-      proj.get(0).location = new PVector(mouseX,mouseY);
+      {
+        proj.get(0).location = new PVector(mouseX,mouseY);
+        PVector angle = PVector.sub(startLocation, new PVector(mouseX, mouseY));
+        proj.get(0).theta = angle.heading2D();
+      }
     }
   }
   f.update();

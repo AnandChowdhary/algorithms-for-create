@@ -29,7 +29,11 @@ public class Projectile
         {
             noStroke();
             fill(255,0,0);
+            pushMatrix();
+            translate(location.x,location.y);
+            rotate(theta);
             ellipse(location.x, location.y, radius, radius);
+            popMatrix();
             updateParticles();
         }
     }
