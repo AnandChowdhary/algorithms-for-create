@@ -42,7 +42,7 @@ void setup()
 void initializeLevel() {
   for (int i = 0; i < level; i++)
   {
-    obstacles.add(new Obstacle(new PVector(random(3000, 4000), 400), obstacles.size(), obstacles));
+    obstacles.add(new Obstacle(new PVector(random(3000, 4000), random(400, 600)), obstacles.size(), obstacles));
   }
 }
 
@@ -58,6 +58,8 @@ void draw()
   display();
   update();
   endMillis = millis();
+  fill(0);
+  textSize(32); text("level " + level, 10, 30);
 }
 
 void setStuff()
@@ -92,6 +94,7 @@ void setStuff()
 
 void fillReserve()
 {
+  for (int i = reserve.size() - 1; i >= 0; i--) reserve.remove(i);
   reserve.add(new Orange());
   reserve.add(new Yellow());
   reserve.add(new Blue());
@@ -117,6 +120,7 @@ void update()
     {
       proj.remove(i);
       fired = false;
+      if (obstacles.size() == 0) nextLevel();
     }
   }
   if (fired)
@@ -174,6 +178,16 @@ void display()
   }
 }
 
+void nextLevel() {
+    level++;
+    initializeLevel();
+      fillReserve();
+      proj.add(reserve.get(0));
+      reserve.remove(0);
+      proj.get(0).location = new PVector(mouseX, mouseY);
+      arangeReserve();
+}
+
 void mousePressed()
 {
   if (!fired)
@@ -188,8 +202,6 @@ void mousePressed()
     } else
     {
       fillReserve();
-      level++;
-      initializeLevel();
       proj.add(reserve.get(0));
       reserve.remove(0);
       proj.get(0).location = new PVector(mouseX, mouseY);
