@@ -1,6 +1,6 @@
 //Oragne fish as projectile.
 
-public class Orange extends Projectile
+public class Orange extends Projectile  
 {
     ArrayList<Bubble> bubbles = new ArrayList<Bubble>();
     int maxSize = 50;
