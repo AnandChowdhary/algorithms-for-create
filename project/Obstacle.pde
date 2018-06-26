@@ -5,6 +5,7 @@ public class Obstacle
   PVector obstaclePosition;
   PVector obstacleSize;
   boolean exists;
+  PImage treasure;
   ArrayList<Obstacle> obstacleArray;
   int obstacleIndex;
 
@@ -12,6 +13,8 @@ public class Obstacle
   {
     projectileLocation = new PVector(0, 0);
     obstacleArray = obstacleArrayX;
+    treasure = loadImage("treasure.png");
+    treasure.resize(100, 100);
     obstacleIndex = obstacleIndexX;
     obstaclePosition = position;
     obstacleSize = new PVector(100, 100);
@@ -24,14 +27,12 @@ public class Obstacle
         obstacleArray.remove(i);
       }
     }
-    //exists = false;
   }
 
   void display(PVector location) {
     if (!exists) return;
     projectileLocation = location;
-    fill(0);
-    rect(obstaclePosition.x, obstaclePosition.y, obstacleSize.x, obstacleSize.y);
+    image(treasure, obstaclePosition.x, obstaclePosition.y);
     if (
       projectileLocation.x > obstaclePosition.x && projectileLocation.x < (obstaclePosition.x + obstacleSize.x) &&
       projectileLocation.y > obstaclePosition.y && projectileLocation.y < (obstaclePosition.y + obstacleSize.y)
