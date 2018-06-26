@@ -55,27 +55,28 @@ void initializeLevel() {
 
 void draw() 
 {
-  if (!playing) {
-    if (started) {
-      image(introScreen, 0, 0);
-    } else {
-      image(gameOverScreen, 0, 0);
-    }
-    return;
-  }
   int frameStart = millis();
   frameTime = 1000/fps;
-  translate(screenOffset, 0);
-  if (!(frameStart > endMillis + frameTime && frameStart < (endMillis + frameTime + 2)))
-  {
-    frameTime = frameTime + (frameStart - endMillis - frameTime);
+  
+  if (!playing) {
+    if (started) {
+      image(gameOverScreen, 0, 0);
+    } else {
+      image(introScreen, 0, 0);
+    }
+  } else {
+    translate(screenOffset, 0);
+    if (!(frameStart > endMillis + frameTime && frameStart < (endMillis + frameTime + 2)))
+    {
+      frameTime = frameTime + (frameStart - endMillis - frameTime);
+    }
+    display();
+    update();
+    endMillis = millis();
+    fill(0);
+    textSize(32); 
+    text("level " + level, 10, 30);
   }
-  display();
-  update();
-  endMillis = millis();
-  fill(0);
-  textSize(32); 
-  text("level " + level, 10, 30);
 }
 
 void setStuff()
@@ -86,7 +87,7 @@ void setStuff()
   realWorldCorrection = 100;
   radius = 10;
   airResistance = 0.99;
-  started = true;
+  started = false;
   bounceResistance = 0.75;
   frameTime = 1000/fps;
   resetPace = 80;
