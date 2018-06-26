@@ -1,0 +1,114 @@
+public class Flock 
+{
+    ArrayList<Bird> birds = new ArrayList<Bird>();
+    float seperation = 10;
+    float avoWeight = 1.0;
+    float cohArea = 200;
+    float cohWeight = 1.5;
+    float aliArea = 200;
+    float aliWeight = 0.5;
+
+    public Flock (int size) 
+    {
+        for (int i = 0; i < size; ++i) 
+        {
+            birds.add(new Bird());            
+        }
+    }
+
+    void run()
+    {
+        avoidance();
+        coherance();
+        alignment();
+        for (int i = 0; i < birds.size(); ++i) 
+        {
+            birds.get(i).run();            
+        }
+    }
+    
+    void avoidance()
+    {
+        for (int i = 0; i < birds.size(); ++i) 
+        {
+            PVector avo = new PVector(0,0);
+
+            Bird a = birds.get(i);
+            for (int j = 0; j < birds.size(); ++j) 
+            {
+                Bird b = birds.get(j);
+                if (a != b)
+                {
+                    float dist = PVector.dist(a.location,b.location);
+                    if (dist < seperation)
+                    {
+                        PVector tmp = PVector.sub(a.location,b.location);
+                        tmp.normalize();
+                        if (dist < 1)
+                        dist = 1;
+                        tmp.div(dist);
+                        avo.add(tmp);
+                    }
+                }
+            }  
+            avo.normalize();  
+            avo.mult(avoWeight);
+            a.addAcceleration(avo);
+        }    
+    }
+    
+    void coherance()
+    {
+        for (int i = 0; i < birds.size(); ++i) 
+        {
+            int counter = 1;
+            Bird a = birds.get(i);
+            PVector avLocation = a.location.copy();
+            for (int j = 0; j < birds.size(); ++j) 
+            {
+                Bird b = birds.get(j);
+                
+                if (a != b)
+                {
+                    float dist = PVector.dist(a.location,b.location);
+                    if (dist < cohArea)
+                    {
+                        avLocation.add(b.location);
+                        counter++;
+                    }
+                }
+            } 
+            avLocation.div(counter);
+            PVector coh = PVector.sub(a.location,avLocation);
+            coh.normalize();
+            coh.mult(cohWeight);
+            a.addAcceleration(coh);   
+        }
+    }
+    
+    void alignment()
+    {
+         for (int i = 0; i < birds.size(); ++i) 
+        {
+            Bird a = birds.get(i);
+            PVector avVelocity = a.velocity.copy();
+            for (int j = 0; j < birds.size(); ++j) 
+            {
+                Bird b = birds.get(j);
+                
+                if (a != b)
+                {
+                    float dist = PVector.dist(a.location,b.location);
+                    if (dist < aliArea)
+                    {
+                        avVelocity.add(b.velocity);
+                    }
+                }
+            } 
+
+            avVelocity.normalize();
+            avVelocity.mult(aliArea);
+            a.addAcceleration(avVelocity);
+        }   
+    }
+}

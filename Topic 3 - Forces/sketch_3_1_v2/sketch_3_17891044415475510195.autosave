@@ -1,0 +1,29 @@
+PVector gravity;
+float airResistance;
+PVector location;
+PVector velocity;
+
+void setup() 
+{
+    size(1000,1000);
+    gravity = new PVector(0,2);
+    airResistance = 0.99;
+    location = new PVector(0,3*height/4);
+    velocity = new PVector(5,5);
+
+}
+
+void draw() 
+{
+    background(255);
+    move();
+    fill(255,0,0);
+    ellipse(location.x, location.y, 10,10);
+}
+
+void move()
+{
+    location.add(velocity);
+    velocity.add(gravity);
+    velocity.mult(airResistance);
+}
