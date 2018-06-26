@@ -1,3 +1,10 @@
+/*
+  Extends the example Noise2D from the examples of the Nature of code
+  to three dimensions (time).
+  made by Wouter Couwenbergh
+  June 2018
+*/
+
 float increment = 0.02;
 float z = 0.0;
 

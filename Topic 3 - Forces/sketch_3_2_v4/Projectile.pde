@@ -32,6 +32,7 @@ public class Projectile
     {
         if (active)
         {
+            //keeps the projectile within the sketch
             if (location.x >= width - radius/2)
             {
                 velocity.x = -bounceResistance * velocity.x;
@@ -52,15 +53,19 @@ public class Projectile
                 velocity.y = -bounceResistance * velocity.y;
                 location.y = radius/2;
             }
+            //checks if the force of the catapult should still be applied
             if (acceleration.mag() > 1)
             {
                 velocity.add(PVector.mult(acceleration, frameTime));
                 acceleration.mult(pow(deceleration,frameTime/0.16));
             }
+            //adds gravity, velocity and resistance
             location.add(PVector.mult(velocity, frameTime));
             velocity.add(PVector.mult(gravity, frameTime));
             velocity.mult(pow(airResistance,frameTime/0.16));
-
+            
+            //checks if the ball has stopped moving, if it has almost stopped
+            //moving this also prevents it from stuttering
             if (abs(velocity.y) < 2 && location.y > (height - radius))
             {
                 velocity.y = 0;

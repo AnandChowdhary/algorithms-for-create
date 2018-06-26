@@ -1,3 +1,9 @@
+/*
+  Draws a colour splash with a normal distribution.
+  made by Wouter Couwenbergh
+  June 2018
+*/
+
 boolean draw = true;
 
 void setup() 
