@@ -40,9 +40,10 @@ void setup()
 }
 
 void initializeLevel() {
+  for (int i = obstacles.size() - 1; i >= 0; i--) obstacles.remove(i);
   for (int i = 0; i < level; i++)
   {
-    obstacles.add(new Obstacle(new PVector(random(3000, 4000), random(400, 600)), obstacles.size(), obstacles));
+    obstacles.add(new Obstacle(new PVector(random(1000, 4000), random(400, 600)), obstacles.size(), obstacles));
   }
 }
 
@@ -59,7 +60,8 @@ void draw()
   update();
   endMillis = millis();
   fill(0);
-  textSize(32); text("level " + level, 10, 30);
+  textSize(32); 
+  text("level " + level, 10, 30);
 }
 
 void setStuff()
@@ -179,13 +181,13 @@ void display()
 }
 
 void nextLevel() {
-    level++;
-    initializeLevel();
-      fillReserve();
-      proj.add(reserve.get(0));
-      reserve.remove(0);
-      proj.get(0).location = new PVector(mouseX, mouseY);
-      arangeReserve();
+  level++;
+  initializeLevel();
+  fillReserve();
+  proj.add(reserve.get(0));
+  reserve.remove(0);
+  proj.get(0).location = new PVector(mouseX, mouseY);
+  arangeReserve();
 }
 
 void mousePressed()
@@ -201,11 +203,8 @@ void mousePressed()
       arangeReserve();
     } else
     {
-      fillReserve();
-      proj.add(reserve.get(0));
-      reserve.remove(0);
-      proj.get(0).location = new PVector(mouseX, mouseY);
-      arangeReserve();
+      level = 0;
+      nextLevel();
     }
   }
 }
