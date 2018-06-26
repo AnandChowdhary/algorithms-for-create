@@ -7,6 +7,7 @@
 int level;
 int fps;
 int endMillis;
+boolean playing;
 int realWorldCorrection;
 int radius;
 float airResistance;
@@ -14,6 +15,7 @@ float bounceResistance;
 float frameTime;
 float resetPace;
 float screenOffset;
+boolean started;
 float projectileScreenPos;
 boolean aim;
 boolean fired;
@@ -25,6 +27,8 @@ PImage fish2;
 PImage fish3;
 PImage fish4;
 PImage bird;
+PImage introScreen;
+PImage gameOverScreen;
 Flock f;
 Catapult c;
 Background b;
@@ -34,6 +38,8 @@ ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
 
 void setup() 
 {
+  playing = false;
+  level = 0;
   size(1366, 768, P2D);
   setStuff();
   frameRate(fps);
@@ -49,6 +55,14 @@ void initializeLevel() {
 
 void draw() 
 {
+  if (!playing) {
+    if (started) {
+      image(introScreen, 0, 0);
+    } else {
+      image(gameOverScreen, 0, 0);
+    }
+    return;
+  }
   int frameStart = millis();
   frameTime = 1000/fps;
   translate(screenOffset, 0);
@@ -72,6 +86,7 @@ void setStuff()
   realWorldCorrection = 100;
   radius = 10;
   airResistance = 0.99;
+  started = true;
   bounceResistance = 0.75;
   frameTime = 1000/fps;
   resetPace = 80;
@@ -87,6 +102,8 @@ void setStuff()
   fish3 = loadImage("fish3.png");
   fish4 = loadImage("fish4.png");
   bird = loadImage("bird.png");
+  introScreen = loadImage("coverimage.png");
+  gameOverScreen = loadImage("over.png");
   c = new Catapult();
   b = new Background();
   f = new Flock(100);
@@ -192,6 +209,11 @@ void nextLevel() {
 
 void mousePressed()
 {
+  if (!playing) {
+    playing = true;
+    started = true;
+    return;
+  }
   if (!fired)
   {
     aim = true;
@@ -201,13 +223,11 @@ void mousePressed()
       reserve.remove(0);
       proj.get(0).location = new PVector(mouseX, mouseY);
       arangeReserve();
-    } 
-    else if(reserve.size() > 0)
+    } else if (reserve.size() > 0)
     {
       proj.get(0).location = new PVector(mouseX, mouseY);
       level = 0;
-    }
-    else
+    } else
     {
       nextLevel();
     }
