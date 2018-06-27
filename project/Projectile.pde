@@ -38,6 +38,7 @@ public class Projectile {
 			rotate(theta);
 			ellipse(location.x, location.y, radius, radius);
 			popMatrix();
+      displayParticles();
 		}
 	}
 
@@ -76,7 +77,16 @@ public class Projectile {
 				}
 			}
 			theta = velocity.heading2D(); // Getting the angle of the projectile's direction
+      updateParticles();
 		}
 	}
+
+  void updateParticles() {
+
+  } 
+
+  void displayParticles() {
+
+  }
 
 }
