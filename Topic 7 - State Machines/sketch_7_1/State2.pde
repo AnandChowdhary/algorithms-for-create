@@ -27,6 +27,7 @@ class State2 extends Screen {
       fillList(particles.size());      
     }
     
+    //run the particles, move and display them.
     for (int i = 0; i < particles.size(); i++)
     {
         particles.get(i).run();
@@ -38,6 +39,7 @@ class State2 extends Screen {
     prevTimeToGo = timeToGo;
   }
   
+  //fills the arraylist to the desired level
   void fillList(int x)
   {
     for (int i = x; i < maxSize; i++)

@@ -1,3 +1,5 @@
+//water surface
+
 class Water
 {
     MSD[] droplets;
@@ -41,10 +43,12 @@ class Water
     
     void display()
     {
+        //start the shape of the water surface
         beginShape();
         vertex(0,height);
         vertex(0,yPos);
         
+        //go through all the parts of the water surface and pass on the forces
         for (int i = 0; i < droplets.length; i++)
         {
             if (i == 0)
@@ -76,6 +80,8 @@ class Water
         {
             if (droplets[rain.get(i).index].location.y < rain.get(i).location.y)
             {
+                //add the force of the raindrop to the appropriate water surface droplet
+                //and subsequently remove it from the arraylist
                 droplets[rain.get(i).index].force -= 25;
                 rain.remove(i);
             }

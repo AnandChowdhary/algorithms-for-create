@@ -1,3 +1,5 @@
+//a raindrop that will fall from the sky and affect the water surface
+
 class Raindrop
 {
     PVector location;
@@ -8,8 +10,11 @@ class Raindrop
     
     public Raindrop()
     {
+        //get the resolution of the water surface
         int nr = surface.getNr();
+        //pick a random number which is within the max nr of water resolution
         index = int(random(0,nr));
+        //convert the index to the apropriate x location
         int x = int(index*surface.size + size/2);
         location = new PVector(x,0);
         velocity = 0;

@@ -1,3 +1,9 @@
+/*
+  Water which moves when a raindrop falls on it.
+  made by Wouter Couwenbergh
+  June 2018
+*/
+
 Water surface;
 
 void setup()

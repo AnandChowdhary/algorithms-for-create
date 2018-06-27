@@ -1,3 +1,5 @@
+//a single droplet of water of the watersurface
+
 class MSD
 {
   PVector location;
@@ -36,9 +38,11 @@ class MSD
       //noStroke();
       //fill(0);
       //ellipse(location.x,location.y,size,size);
+      //adds a new vertex to the water surface
       vertex(location.x,location.y);
   }
   
+  //update the location of the droplet
   void update(float f1, float f2)
   {
       force = -force + f1 + f2;
